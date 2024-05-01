@@ -1,11 +1,15 @@
 menu = """
 
+[u] Novo usuário
+[c] Nova conta
 [d] Depositar
 [s] Sacar
 [e] Extrato
 [q] Sair
-
 => """
+
+usuarios = []
+contas = []
 
 saldo = 0
 limite = 500
@@ -45,10 +49,41 @@ def func_extrato(saldo, /, *, extrato):
     print(f"\nSaldo atual: R${saldo:.2f}") 
     print("\n#######################################")
 
+def criar_usuario(lista_usuarios):
+    nome = str(input("Digite seu nome: "))
+    data_nascimento = str(input("Digite sua data de nascimento (DD-MM-AAAA): "))
+    cpf = int(input("Digite seu número de CPF: "))
+    for i in lista_usuarios:
+        if i[2] == cpf:
+            print("Erro: CPF já cadastrado!")
+        return
+    endereco = str(input("Digite seu endereço no formato formato(rua, número - bairro - cidade/abreviação do estado): "))
+    lista_usuarios.append([nome, data_nascimento, cpf, endereco])
+    print("Novo usuário criado com sucesso!")
+
+def criar_conta(lista_contas, lista_usuarios):
+    user = None
+    cpf = int(input("Digite o CPF do usuário: "))
+    for i in lista_usuarios:
+        if i[2] == cpf:
+            user = i
+        break
+    if user:
+        numero_da_conta = len(lista_contas) + 1
+        lista_usuarios.append({"agencia": "0001", "numero_conta": numero_da_conta, "usuario": user})
+        print("Conta criada com sucesso!")
+    else:
+        print("Usuário não encontrado!")
+
+
 while True:
     opcao = input(menu)
 
-    if opcao == "d":
+    if opcao == "u":
+        criar_usuario(usuarios)
+    elif opcao == "c":
+        criar_conta(contas, usuarios)
+    elif opcao == "d":
         saldo, extrato = func_depositar(saldo, extrato)
     elif opcao == "s":
         saldo, extrato = func_sacar(saldo=saldo, extrato=extrato, limite=limite, numero_saques=numero_saques)
