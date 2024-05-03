@@ -14,10 +14,10 @@ numero_saques = 0
 LIMITE_SAQUES = 3
 
 while True:
-    opcao = input(menu)  # Solicitação da opção ao usuário
+    opcao = input(menu)
 
     if opcao == "d":  # Opção para depósito
-        valor_deposito = float(input("Insira o valor do depósito: "))  # Solicita o valor do depósito
+        valor_deposito = float(input("Insira o valor do depósito: ")) 
         if valor_deposito > 0:  # Verifica se o valor do depósito é positivo
             saldo += valor_deposito  # Adiciona o valor do depósito ao saldo
             extrato += f"Depósito: R${valor_deposito:.2f}\n"  # Adiciona a transação ao extrato
@@ -25,7 +25,7 @@ while True:
         else:
             print("Depósito não efetuado, valor inválido!")
     elif opcao == "s":  # Opção para saque
-        valor_saque = float(input("Insira o valor do saque: "))  # Solicita o valor do saque
+        valor_saque = float(input("Insira o valor do saque: "))
         if valor_saque > 0 and valor_saque <= limite:  # Verifica se o valor do saque é válido
             if numero_saques == LIMITE_SAQUES:  # Verifica se o limite de saques diários foi atingido
                 print("Limite de saques diários atingido!")
@@ -44,6 +44,6 @@ while True:
         print(f"\nSaldo atual: R${saldo:.2f}")  # Exibe o saldo atual
         print("\n#######################################")
     elif opcao == "q":  # Opção para sair do programa
-        break  # Encerra o loop
+        break
     else:
         print("Operação inválida, por favor selecione novamente a operação desejada.")
