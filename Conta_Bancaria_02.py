@@ -55,11 +55,11 @@ def criar_usuario(lista_usuarios):
     cpf = int(input("Digite seu número de CPF: "))
     for i in lista_usuarios:
         if i[2] == cpf:
-            print("Erro: CPF já cadastrado!")
+            print("\nErro: CPF já cadastrado!")
         return
     endereco = str(input("Digite seu endereço no formato formato(rua, número - bairro - cidade/abreviação do estado): "))
     lista_usuarios.append([nome, data_nascimento, cpf, endereco])
-    print("Novo usuário criado com sucesso!")
+    print("\nNovo usuário criado com sucesso!")
 
 def criar_conta(lista_contas, lista_usuarios):
     user = None
@@ -71,9 +71,9 @@ def criar_conta(lista_contas, lista_usuarios):
     if user:
         numero_da_conta = len(lista_contas) + 1
         lista_usuarios.append({"agencia": "0001", "numero_conta": numero_da_conta, "usuario": user})
-        print("Conta criada com sucesso!")
+        print("\nConta criada com sucesso!")
     else:
-        print("Usuário não encontrado!")
+        print("\nErro: Usuário não encontrado!")
 
 
 while True:
