@@ -84,7 +84,7 @@ def criar_conta(lista_contas, lista_usuarios):
         return
     numero_da_conta = len(lista_contas) + 1
     lista_contas.append({"agência": "0001", "número da conta": numero_da_conta, "usuário": usuario[0]})
-    historico_contas += f"nome: {usuario[0]} - número da conta: {numero_da_conta} - agência: 0001\n"
+    contas_cadastradas += f"nome: {usuario[0]} - número da conta: {numero_da_conta} - agência: 0001\n"
     print("\nConta criada com sucesso!")
 
 # Loop principal do programa
